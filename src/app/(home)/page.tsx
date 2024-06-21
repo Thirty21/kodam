@@ -3,7 +3,7 @@ import { Background } from "./components/Background";
 
 export default function Home() {
   return (
-   <main>
+   <main >
     <Background/>
    </main>
   );

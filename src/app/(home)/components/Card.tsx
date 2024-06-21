@@ -47,7 +47,7 @@ export function Card() {
               className="block w-full bg-transparent rounded-2xl pl-3 py-1.5 text-white dark:text-white text-base border border-purple-500 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600 placeholder-white"
               placeholder="Enter your name"
             />
-            <div className="mt-2 ml-10">
+            <div className="mt-2 md:ml-10">
             {animal && submittedName && (
           <p className="mt-4 text-white text-lg">
             {submittedName}, Kodam Kamu {animal}!
