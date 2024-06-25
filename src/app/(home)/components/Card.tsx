@@ -1,6 +1,5 @@
 "use client";
 
-
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import React from "react";
 import Link from "next/link";
@@ -10,14 +9,22 @@ export function Card() {
   const [name, setName] = useState('');
   const [submittedName, setSubmittedName] = useState('');
   const [codam, setCodam] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const codams = ['Kunti Bogel', 'Tuyul Mullet', 'Nyi Blorong', 'Macan Bogel', 'Tidak Ada', 'Sperpat', 'Tidak Ada', 'Kijang Mullet', 'Kadal Pargoy', 'Babi Brondong','Ayam Penyet','Rusa Bungkuk'];
+  const codams = ['Kunti Bogel', 'Tuyul Mullet', 'Nyi Blorong', 'Macan Bogel', 'Tidak Ada', 'Sperpat', 'Tidak Ada', 'Kijang Mullet', 'Badak Pargoy', 'Babi Brondong','Ayam Penyet','Rusa Bungkuk','Sarden Rendang','Macan Sipit','Badak Klenger'];
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    const randomCodam = codams[Math.floor(Math.random() * codams.length)];
-    setCodam(randomCodam);
-    setSubmittedName(name);
+    setLoading(true);
+    setSubmittedName('');
+    setCodam('');
+    
+    setTimeout(() => {
+      const randomCodam = codams[Math.floor(Math.random() * codams.length)];
+      setCodam(randomCodam);
+      setSubmittedName(name);
+      setLoading(false);
+    }, 1000);
   };
 
   return (
@@ -48,11 +55,15 @@ export function Card() {
               placeholder="Enter your name"
             />
             <div className="mt-2 md:ml-10">
-            {codam && submittedName && (
-          <p className="mt-4 text-white text-lg">
-            {submittedName}, Kodam Kamu {codam}!
-          </p>
-            )}
+              {loading ? (
+                <p className="mt-4 text-white text-lg">Loading...</p>
+              ) : (
+                codam && submittedName && (
+                  <p className="mt-4 text-white text-lg">
+                    {submittedName}, Kodam Kamu {codam}!
+                  </p>
+                )
+              )}
             </div>
           </CardItem>
           <div className="flex justify-between items-center mt-20">
