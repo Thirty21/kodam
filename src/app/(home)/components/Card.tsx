@@ -1,23 +1,23 @@
 "use client";
 
-import Image from "next/image";
-import React from "react";
+
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import React from "react";
 import Link from "next/link";
 import { useState } from 'react';
 
 export function Card() {
   const [name, setName] = useState('');
   const [submittedName, setSubmittedName] = useState('');
-  const [animal, setAnimal] = useState('');
+  const [codam, setCodam] = useState('');
 
-  const animals = ['Kunti Bogel', 'Tuyul Mullet', 'Nyi Blorong', 'Macan Bogel', 'Tidak Ada', 'Tidak Ada', 'Tidak Ada', 'Tidak Ada', 'Uler Sawah'];
+  const codams = ['Kunti Bogel', 'Tuyul Mullet', 'Nyi Blorong', 'Macan Bogel', 'Tidak Ada', 'Sperpat', 'Tidak Ada', 'Kijang Mullet', 'Kadal Pargoy', 'Babi Brondong','Ayam Penyet','Rusa Bungkuk'];
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
-    setAnimal(randomAnimal);
-    setSubmittedName(name); // Save the submitted name
+    const randomCodam = codams[Math.floor(Math.random() * codams.length)];
+    setCodam(randomCodam);
+    setSubmittedName(name);
   };
 
   return (
@@ -40,7 +40,7 @@ export function Card() {
           <CardItem translateZ="100" className="w-full mt-4">
             <input
               type="text"
-              id="name"
+              // id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
@@ -48,9 +48,9 @@ export function Card() {
               placeholder="Enter your name"
             />
             <div className="mt-2 md:ml-10">
-            {animal && submittedName && (
+            {codam && submittedName && (
           <p className="mt-4 text-white text-lg">
-            {submittedName}, Kodam Kamu {animal}!
+            {submittedName}, Kodam Kamu {codam}!
           </p>
             )}
             </div>
